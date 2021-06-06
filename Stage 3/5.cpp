@@ -4,7 +4,7 @@ using namespace std;
 unsigned long int sum(const unsigned long int &a){
     unsigned long int s = 0;
     // Cac uoc cua n khong lon hon n / 2 
-    for (unsigned int i = 2; i <= a / 2; ++i){
+    for (unsigned int i = 1; i <= a / 2; ++i){
         if (a % i == 0) s += i;
     }
     return s;
