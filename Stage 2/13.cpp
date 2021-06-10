@@ -15,7 +15,7 @@ int main(){
         int k = b[i] - 'a';
         ab[k] = 1;
     }
-    if (aa == ab) cout << "TRUE";
-    else cout << "FALSE";
+    if (aa == ab) cout << "YES";
+    else cout << "NO";
     cout << endl;
 }

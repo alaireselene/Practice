@@ -7,9 +7,14 @@
             ],
             "defines": [],
             "compilerPath": "/usr/bin/gcc",
-            "cStandard": "gnu17",
-            "cppStandard": "gnu++11",
-            "intelliSenseMode": "linux-gcc-x64"
+            "cStandard": "c11",
+            "cppStandard": "c++11",
+            "intelliSenseMode": "linux-gcc-x64",
+            "compilerArgs": [
+                "-std=c++11 ",
+                "-O2 ",
+                "-Wall"
+            ]
         }
     ],
     "version": 4

@@ -51,3 +51,4 @@ int main(){
     div_hm(a, b);
     cout << b[0] << ' ' << b[1] << endl;
 }
+// Chuyen thanh xau

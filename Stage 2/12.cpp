@@ -10,16 +10,16 @@ int main(){
     - (n - 3) / 5 + 1 so chia 5 du 3
     - (n - 4) / 5 + 1 so chia 5 du 4
     */
-   int a, b;
+   unsigned long long int a, b;
    cin >> a >> b;
-   int aa[5], ab[5];
+   unsigned long long int aa[5], ab[5];
    aa[0] = a / 5;
    ab[0] = b / 5;
    /* Thuc ra ban dau count = 0 nhung
    vong for ben duoi chay tu 1 nen de
    gop code vao thi count phai bat 
    dau luon tu aa[0] * ab[0] */
-   int count = aa[0] * ab[0];
+   unsigned long long int count = aa[0] * ab[0];
    for (int i = 1; i < 5; ++i){
        aa[i] = (a - i) / 5 + 1;
        ab[i] = (b - 5 + i) / 5 + 1;
