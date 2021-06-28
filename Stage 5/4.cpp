@@ -61,7 +61,7 @@ int main() {
     while (cin >> in)
     {
         in = '.' + in + '.';
-        cout << kmp_search(in, ".1.") << endl;
+        cout << kmp_search(in, ".1.") - 1 << endl;
     }
     cout << count;
     return 0;
