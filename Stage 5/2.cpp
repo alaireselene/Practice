@@ -53,20 +53,23 @@ void lps_add(const string &pat, int N, int *lps){
 }
 
 int main(){
-    string a; // = "THPT Cam Giang huyen Cam Giang";
+    string a;;
+    cin.ignore();
     getline(cin, a);
+    string b;
     cin.ignore();
-    string b; // = "Cam"
     getline(cin, b);
-    cin.ignore();
     int count = 0;
     for (int i = 0; i < a.length(); ++i){
-        if (a[i] == ' '){
-            if(i == 0 || i == a.length() - 1){
-                continue;
-            } 
-            else ++count;
+        if ((a[i] >= 'a' && a[i] <= 'z') || (a[i] >= 'A' && a[i] <= 'Z')){
+            if (a[i + 1] == ' '){
+                ++count;
+            }
+            else{
+                if (i == a.length() - 1) ++count;
+                else continue;
+            }
         }
     }
-    cout << count + 1 << endl << kmp_search(a, b);
+    cout << count << endl << kmp_search(a, b);
 }
