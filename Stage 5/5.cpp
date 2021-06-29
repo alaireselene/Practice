@@ -1,12 +1,21 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+void dx(string &ch, const int &l, const int &r){
+    int k = l + r, cnt = 0;
+    for (int i = l; i <= k/2; ++i){
+        char temp = ch[i];
+        ch[i] = ch[r - cnt];
+        ch[r - cnt] = temp;
+        ++cnt;
+    }
+}
 int main(){
     string a;
     getline(cin, a);
-    cin.ignore();
-    int b;
-    cin >> b;
-    cout << a.substr(b, a.length() - b) << a.substr(0, b);
+    int e = 3, i = a.length() - 1;
+    dx(a, 0, e - 1);
+    dx(a, e, i);
+    dx(a, 0, i);
     return 0;
 }
