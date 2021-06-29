@@ -13,7 +13,8 @@ void dx(string &ch, const int &l, const int &r){
 int main(){
     string a;
     getline(cin, a);
-    int e = 3, i = a.length() - 1;
+    int e, i = a.length() - 1;
+    cin >> e;
     dx(a, 0, e - 1);
     dx(a, e, i);
     dx(a, 0, i);
