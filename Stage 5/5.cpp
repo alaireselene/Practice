@@ -18,5 +18,6 @@ int main(){
     dx(a, 0, e - 1);
     dx(a, e, i);
     dx(a, 0, i);
+    cout << a << '\n';
     return 0;
 }
