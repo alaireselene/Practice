@@ -1,6 +1,16 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+vector <int> convert(string &a){
+    int count = 0;
+    vector <int> ans;
+    for (int i = a.length() - 1; i >= 0; --i){
+        for (int k = 0; i < a.length() - 1; ++i){
+            if (a[k] < a[i]) ++count;
+        }
+    }
+}
+
 int main(){
     string num = "264153";
     int n = num.length(), count = 0;
