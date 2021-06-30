@@ -20,5 +20,6 @@ int main(){
         cout << ans[i] << '\t';
     }
     cout << '\n';
+    cout << "Exit.";
     return 0;
 }
