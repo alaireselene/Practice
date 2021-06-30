@@ -16,7 +16,7 @@ int main(){
     string num = "264153";
     vector<int> ans;
     convert(num, ans);
-    for (int i = 0; i < sizeof(ans) / sizeof(ans[1]); ++i){
+    for (int i = 0; i < ans.size(); ++i){
         cout << ans[i] << '\t';
     }
     cout << '\n';
