@@ -36,5 +36,6 @@ string fibo(string a){
 int main(){
     string a;
     cin >> a;
+    if (a == "0") cout << 0;
     cout << fibo(a);
 }

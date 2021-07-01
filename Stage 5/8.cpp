@@ -64,8 +64,7 @@ string giaithua(string a){
     else return big_mul(a, giaithua(to_string(stoi(a) - 1)));
 }
 int main(){
-    string a;
-    cin >> a;
+    string a = "162";
     cout << giaithua(a) << '\t';
     return 0;
 }
