@@ -41,10 +41,13 @@ string big_add(string a, string b){
     return ans;
 }
 string smol_mul(string a, char b){
+    // Hàm nhân 1 số lớn hơn 1 chữ số
+    // Với sô có 1 chữ số
     string ans;
     int temp = 0;
     for (int i = a.size() - 1; i >= 0; --i){
         int num = (b - '0') * (a[i] - '0') + temp;
+        // Như trên.
         char ch = int(num % 10) + '0';
         ans.insert(0, 1, ch);
         temp = num / 10;
@@ -53,6 +56,10 @@ string smol_mul(string a, char b){
     return ans;
 }
 string big_mul(string a, string b){
+    // Ý tưởng: Nhân từng giá trị xâu a
+    // với xâu b bằng hàm smol_mul.
+    // sau đó, chèn thêm chữ số 0 vào
+    // sau và cộng với string ans
     string ans = "";
     string preans[a.length()];
     for (int i = a.length() - 1; i <= 0; --i){
