@@ -29,13 +29,16 @@ string big_add(string a, string b){
     }
     return ans;
 }
-string fibo(string a){
-    if (a == "1" || a == "2") return "1";
-    return big_add(fibo(to_string(stoi(a) - 1)), fibo(to_string(stoi(a) - 2)));
-}
+
 int main(){
-    string a;
+    int a;
     cin >> a;
-    if (a == "0") cout << 0;
-    cout << fibo(a);
+    if (a == 0) cout << 0;
+    string f, f1 = "1", f2 = "1";
+    for (int i  = 3; i <= a; ++i){
+        f = big_add(f1, f2);
+        f1 = f2;
+        f2 = f;
+    }
+    cout << f;
 }

@@ -58,13 +58,14 @@ string big_mul(string a, string b){
     }
     return ans;
 }
-string giaithua(string a){ 
-    string b = to_string(stoi(a) - 1);
-    if (b == "0") return "1";
-    else return big_mul(a, giaithua(to_string(stoi(a) - 1)));
-}
 int main(){
-    string a = "162";
-    cout << giaithua(a) << '\t';
+    int a;
+    cin >> a;
+    if (a == 0) cout << 1;
+    string f = "1";
+    for (int i = 2; i <= a; ++i){
+        f = big_mul(f, to_string(i));
+    }
+    cout << f;
     return 0;
 }
