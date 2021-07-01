@@ -45,13 +45,10 @@ string big_mul(string a, string b){
     }
     return ans;
 }
-string big_mul(string a, string b);
 int main(){
-    string a = "99";
-    string b = "99";
+    string a = "16239847612389347632189462189734762189463278476";
+    string b = "99999999999999999999999999111111192929399999999";
     char c = '9';
     cout << big_add(a, b) << '\t';
-    cout << smol_mul(a, c) << '\t';
-    cout << big_mul(a, b) << '\n';
     return 0;
 }
