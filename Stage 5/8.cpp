@@ -61,10 +61,11 @@ string big_mul(string a, string b){
 string giaithua(string a){ 
     string b = to_string(stoi(a) - 1);
     if (b == "0") return "1";
-    else return big_mul(a, giaithua(b));
+    else return big_mul(a, giaithua(to_string(stoi(a) - 1)));
 }
 int main(){
-    string a = "5";
+    string a;
+    cin >> a;
     cout << giaithua(a) << '\t';
     return 0;
 }

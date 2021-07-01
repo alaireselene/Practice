@@ -30,6 +30,11 @@ string big_add(string a, string b){
     return ans;
 }
 string fibo(string a){
-    if (a == "1" || a == "0") return "1";
-    return big_add(a, fibo(to_string(stoi(a) - 1)));
+    if (a == "1" || a == "2") return "1";
+    return big_add(fibo(to_string(stoi(a) - 1)), fibo(to_string(stoi(a) - 2)));
+}
+int main(){
+    string a;
+    cin >> a;
+    cout << fibo(a);
 }
