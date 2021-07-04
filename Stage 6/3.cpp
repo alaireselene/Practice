@@ -2,13 +2,8 @@
 using namespace std;
 
 int main(){
-    int size = rand() % (20 + 1);
-    vector <int> arr;
-    for (int i = 0; i < size; ++i){
-        arr.push_back(rand() % (40 + 1));
-        cout << arr[i] << '\t';
-    }
-    cout << '\n';
+    int size = 6;
+    vector <int> arr {5, 3, 9, 4, 8, 1};
     for (int i = 0; i < size; ++i){
         if (arr[i] % 3 == 0) arr.erase(arr.begin() + i);
         else continue;
