@@ -4,8 +4,7 @@ using namespace std;
 vector <int> in, temp;
 
 bool is_mirror(int l, int r){
-    int mid = l + (r - l) / 2;
-    for (; l <= mid; ++l, --r){
+    for (; l <= r; ++l, --r){
         if(in[l] != in[r]) return false;
     }
     return true;
