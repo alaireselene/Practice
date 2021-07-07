@@ -9,7 +9,7 @@ int main(){
     float a[n], in;
     for (float &item:a) cin >> item;
     cin >> in;
-    for (int i = 0; i < n; ++i){
+    for (int i = 0; i < n - 1; ++i){
         if (a[i] > in) ++len;
         else len = 0;
         if (len > comp){
