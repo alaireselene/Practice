@@ -32,9 +32,9 @@ void process(){
             while (ch[i] == 'X') ++i, ++d;
         }
         else if (ch[i] == 'V') {
-            while (ch[i] == 'V') --c, --j;
+            while (ch[j] == 'V') --c, --j;
             ch[i] = ch[j];
-            ch[j] - 'V';
+            ch[j] = 'V';
             --c, --j, ++cnt;
             out();
         }
@@ -50,7 +50,7 @@ void process(){
             }
             else{
                 ch[j] = ch[i];
-                ch[i] - 'X';
+                ch[i] = 'X';
                 ++d, ++cnt;
                 out();
             }
