@@ -1,24 +1,68 @@
 #include <bits/stdc++.h>
-// Let it alone lmao.
+#define max 100
 using namespace std;
-void sort (int *arr, const int &size){
-    for (int len = int(log10(size + 1) / log10(2)); len > 0; len = int(log10(len + 1) / log10(2))){
-        // Can phai co 1 cong thuc de lay khoang cach giua 2 phan tu. O day thay
-        // vi su dung 3 * n + 1,
-        // su dung cong thuc de quy: 2 ^ n - 1 voi n ban dau la do dai mang arr.
-        // Do phuc tap: O(n ^ (2 / 3));
+
+int n, cnt;
+char ch[max];
+
+void inp(){
+    cin >> n;
+    for (int i = 0; i < n; ++i){
+        int num = rand() % 3 + 1;
+        if (num == 1) ch[i] = 'X';
+        else if (num == 2) ch[i] = 'D';
+        else ch[i] = 'V';
     }
 }
-int main(){
-    int k;
-    cin >> k;
-    char ch;
-    int arr[k];
-    for (int i = 0; i < k; ++i){
-        cin >> ch;
-        if (ch == 'X') arr[i] = 0;
-        if (ch == 'D') arr[i] = 1;
-        if (ch == 'V') arr[i] = 2;
-    }
 
+void out(){
+    for (int i = 0; i < n; ++i){
+        cout << ch[i] << '\t';
+    }
+    cout << '\n';
+}
+
+void process(){
+    int d = 0, c = n + 1, i = 1, j = n;
+    // d, c - 2 bien dinh vi
+    // i, j - 2 bien duyet mang
+    cnt = 0;
+    while (i < c){
+        if (ch[i] == 'X'){
+            while (ch[i] == 'X') ++i, ++d;
+        }
+        else if (ch[i] == 'V') {
+            while (ch[i] == 'V') --c, --j;
+            ch[i] = ch[j];
+            ch[j] - 'V';
+            --c, --j, ++cnt;
+            out();
+        }
+        else{
+            while (ch[c - 1] == 'V') --c;
+            while (ch[j] == 'D') --j;
+            if (j == i) return;
+            if (ch[j] == 'V'){
+                ch[j] = ch[i];
+                ch[c - 1] = 'V';
+                --c, ++cnt;
+                out();
+            }
+            else{
+                ch[j] = ch[i];
+                ch[i] - 'X';
+                ++d, ++cnt;
+                out();
+            }
+        }
+    }
+    cout << '\n';
+}
+// Let it alone lmao.
+int main(){
+    inp();
+    out();
+    process();
+    cout << "Time to convert: " << cnt;
+    return 0;
 }
