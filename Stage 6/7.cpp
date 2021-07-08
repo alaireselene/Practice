@@ -29,9 +29,9 @@ void shell_sort(){
         // Tao bien khoang cach - gap.
         for (int i = gap; i < n; ++i){
             // Dat bien 'linh canh' - i.
-            // Sau do lay vi tri cua linh canh - tmp.
+            // Sau do lay gia tri cua linh canh - tmp.
             // Linh canh se la phan tu nho nhat.
-            // Cac buoc o duoi cung la 1 cach swap tung phan tu.
+            // Cac buoc o duoi cung la 1 cach swap tung phan tu. Chu y!
             int tmp = ch[i];
             int j;
             for (j = i; j - gap >= 0 && ch[j] < ch[j - gap]; j -= gap){
@@ -40,12 +40,14 @@ void shell_sort(){
             ch[j] = tmp;
         }
         out(); ++cnt;
+        int i = 0;
+        while (ch[i] <= ch[i + 1]) ++i;
+        if (i >= n - 1) return;
     }
 }
 
 int main(){
     inp();
-    out();
     shell_sort();
     cout << cnt << '\n';
     return 0;
