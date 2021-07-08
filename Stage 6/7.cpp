@@ -1,68 +1,52 @@
 #include <bits/stdc++.h>
-#define max 100
 using namespace std;
 
-int n, cnt;
-char ch[max];
+vector <int> ch;
+int n, cnt = 0; // n - so phan tu, cnt - so lan bien doi;
 
 void inp(){
     cin >> n;
+    char tmp; // Input X _ D _ V;
     for (int i = 0; i < n; ++i){
-        int num = rand() % 3 + 1;
-        if (num == 1) ch[i] = 'X';
-        else if (num == 2) ch[i] = 'D';
-        else ch[i] = 'V';
+        cin >> tmp;
+        if (tmp == 'X') ch.push_back(1);
+        if (tmp == 'D') ch.push_back(2);
+        if (tmp == 'V') ch.push_back(3);
     }
 }
 
 void out(){
-    for (int i = 0; i < n; ++i){
-        cout << ch[i] << '\t';
+    for (int &item: ch){
+        if (item == 1) cout << 'X' << ' ';
+        if (item == 2) cout << 'D' << ' ';
+        if (item == 3) cout << 'V' << ' ';
     }
     cout << '\n';
 }
 
-void process(){
-    int d = 0, c = n + 1, i = 1, j = n;
-    // d, c - 2 bien dinh vi
-    // i, j - 2 bien duyet mang
-    cnt = 0;
-    while (i < c){
-        if (ch[i] == 'X'){
-            while (ch[i] == 'X') ++i, ++d;
-        }
-        else if (ch[i] == 'V') {
-            while (ch[j] == 'V') --c, --j;
-            ch[i] = ch[j];
-            ch[j] = 'V';
-            --c, --j, ++cnt;
-            out();
-        }
-        else{
-            while (ch[c - 1] == 'V') --c;
-            while (ch[j] == 'D') --j;
-            if (j == i) return;
-            if (ch[j] == 'V'){
-                ch[j] = ch[i];
-                ch[c - 1] = 'V';
-                --c, ++cnt;
-                out();
+void shell_sort(){
+    for (int gap = n / 2; n > 0; gap /= 2){
+        // Tao bien khoang cach - gap.
+        for (int i = gap; i < n; ++i){
+            // Dat bien 'linh canh' - i.
+            // Sau do lay vi tri cua linh canh - tmp.
+            // Linh canh se la phan tu nho nhat.
+            // Cac buoc o duoi cung la 1 cach swap tung phan tu.
+            int tmp = ch[i];
+            int j;
+            for (j = i; j - gap >= 0 && ch[j] < ch[j - gap]; j -= gap){
+                ch[j] = ch[j - gap];
             }
-            else{
-                ch[j] = ch[i];
-                ch[i] = 'X';
-                ++d, ++cnt;
-                out();
-            }
+            ch[j] = tmp;
         }
+        out(); ++cnt;
     }
-    cout << '\n';
 }
-// Let it alone lmao.
+
 int main(){
     inp();
     out();
-    process();
-    cout << "Time to convert: " << cnt;
+    shell_sort();
+    cout << cnt << '\n';
     return 0;
 }
