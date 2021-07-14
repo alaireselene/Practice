@@ -1,24 +1,38 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int main(){
-    vector <int> n;
-    int k, num;
+vector <int> a;
+int k, l, r;
+
+void inp(){
     cin >> k;
+    int num;
     for (int i = 0; i < k; ++i){
         cin >> num;
-        n.push_back(num);
+        a.push_back(num);
     }
-    sort(n.begin(), n.end());
-    for (int i = 0; i < k - 1; ++i){
-        if (n[i] % 10 == 0 && n[i] != 0) continue;
-        else{
-            int t1 = n[i] / 10, t2 = n[i + 1] / 10;
-            while (t1 <= t2){
-                cout << t1 * 10 << ' ';
-                ++t1;
-            }
-        }
+    sort(a.begin(), a.end());
+    for (int &item:a) cout << item << ' ';
+    cout << '\n';
+}
+
+void declare(const int &a, const int &b){
+    l = int (double (a / 10.0) + 0.9) * 10;
+    r = int (double (b / 10.0)) * 10;
+    if (r == b) r -= 10;
+    if (l == a) l += 10;
+    while (l <= r){
+        cout << l << ' ';
+        l += 10;
     }
-    return 0;
+}
+
+int main(){
+    inp();
+    int pos = 0;
+    for (int i = 0; i < k; ++i){
+        declare(a[i], a[i + 1]);
+    }
+    cout << '\n';
+    return 0; 
 }

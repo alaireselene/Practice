@@ -20,7 +20,10 @@ void inp(){
     }
 }
 
-
+long long compare(const long long &a, const long long &b){
+    if (a > b) return a;
+    else return b;
+}
 void work(){
     sum = a[0];
     for (int i = 0; i < n; ++i){ // Check out every number;
