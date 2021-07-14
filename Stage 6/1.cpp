@@ -1,8 +1,9 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-vector <int> a;
-int k, l, r;
+vector <long long> a;
+int k;
+long long l, r; // for Declare function.
 
 void inp(){
     cin >> k;
@@ -12,11 +13,11 @@ void inp(){
         a.push_back(num);
     }
     sort(a.begin(), a.end());
-    for (int &item:a) cout << item << ' ';
+    for (auto &item:a) cout << item << ' ';
     cout << '\n';
 }
 
-void declare(const int &a, const int &b){
+void declare(const long long &a, const long long &b){
     l = int (double (a / 10.0) + 0.9) * 10;
     r = int (double (b / 10.0)) * 10;
     if (r == b) r -= 10;
