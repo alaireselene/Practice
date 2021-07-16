@@ -3,14 +3,13 @@ using namespace std;
 
 int main(){
     int size = 6;
-    vector <int> arr {5, 3, 9, 4, 8, 1};
+    vector <long long> arr {6, 3, 5, 7, 18, 8};
+    vector <long long> store;
     for (int i = 0; i < size; ++i){
-        if (arr[i] % 3 == 0) arr.erase(arr.begin() + i);
-        else continue;
+        if(arr[i] % 3 == 0 && arr[i] != 0) continue;
+        store.push_back(arr[i]);
     }
-    for (int i = 0; i < arr.size(); ++i)
-    {
-        cout << arr[i] << '\t';
-    }
+    for (auto &item:store) cout << item << ' ';
+    cout << '\n';
     return 0;
 }
