@@ -5,14 +5,17 @@ vector <long long> a;
 long long ans = INT32_MIN;
 
 int n, pos;
+
+// a - input array
+// ans - answer
+
+int n, pos = 0, pend;
 // n - size of array.
-// len - len of max.
 // pos - pos of 1st position.
+// pend - pos of the last position.
 
 long long x;
 // x - input.
-// sum - answer.
-// Never let sum = 0, if the answer is -1 lmao;
 
 void inp(){
     cin >> n;
@@ -23,14 +26,25 @@ void inp(){
 }
 
 void work(){
-    int temp = a[0];
+    long long dp = a[0];
+    int tpos = 0;
     for (int i = 1; i < n; ++i){
-        temp = a[]
+        int tdp = max(dp + a[i], a[i]);
+        if (tdp == dp + a[i]){
+            tpos = i - 1;
+        }
+        else tpos = i;
+        dp = tdp;
+        if (dp > ans){
+            pos = tpos;
+            ans = dp;
+            pend = i;
+        }
     }
 }
 int main(){
     inp();
     work();
-    cout << ;
+    cout << pos << ' ' << pend << ' ' << ans;
     return 0;
 }
