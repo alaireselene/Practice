@@ -11,8 +11,12 @@ void gen(){
     for (int i = 2; ftr.back() < n; ++i){
         ftr.push_back(ftr[i - 2] * i);
     }
-    for (auto &item:ftr) cout << item << ' ';
-    cout << '\n';
+    for (int i = ftr.size() - 1; i >= 0; --i){
+        if (n / ftr[i] < 1) continue;
+        else{
+            long long t = n / ftr[i];
+            cout << "D[" << i << "] = " t << " * " ftr[i] << " = " t * ftr[i] << '\n
+        }
 }
 int main(){
     gen();
