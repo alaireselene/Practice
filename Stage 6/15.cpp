@@ -15,7 +15,7 @@ void gen(){
         if (n / ftr[i] < 1) continue;
         else{
             long long t = n / ftr[i];
-            cout << "D[" << i << "] = " t << " * " ftr[i] << " = " t * ftr[i] << '\n';
+            cout << "D[" << i + 1 << "] = " << t << " * " << ftr[i] << " = " <<  t * ftr[i] << '\n';
             n -= t * ftr[i];
         }
     }
