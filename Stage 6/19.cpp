@@ -36,5 +36,7 @@ int main(){
         ans += (a[i] + b[i]);
     }
     FOUT << ans;
+    FOUT.close();
+    FIN.close();
     return 0;
 }
