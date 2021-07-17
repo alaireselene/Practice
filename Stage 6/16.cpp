@@ -1,10 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-vector <long long> a;
 vector <long long> x;
-vector <long long> store;
-vector <int> pos;
+vector <long long> a;
 int n;
 
 void in(){
@@ -12,33 +10,27 @@ void in(){
     cin >> n;
     for (int i = 0; i < n; ++i){
         cin >> inp;
-        a.push_back(inp);
-    }
-    for (int i = 0; i < n; ++i){
-        cin >> inp;
         x.push_back(inp);
     }
     for (int i = 0; i < n; ++i){
-        store.push_back(a[i] - x[i]);
+        cin >> inp;
+        a.push_back(inp);
     }
 }
 
-void cal(){
-     long long dp = 0;
-     for (int i = store.size() - 1; i >= 0; --i){
-         dp += store[i];
-         if (dp >= 0){
-             if (store[i] < 0) pos.push_back(-1);
-             else pos.push_back(i);
-         }
-         else pos.push_back(-1);
-     }
-     for (int i = pos.size() - 1; i >= 0; --i){
-         if (pos[i] != -1) cout << pos[i] + 1  << ' ';
-     }
-     cout << '\n';
+int cal(int pos){
+    long long k = x[pos];
+    for (int i = pos; i < n; ++i){
+        k -= a[i];
+        if (k < 0) return -1;
+        if (i != n -1) k += x[i + 1];
+    }
+    return pos + 1;
 }
 int main(){
     in();
-    cal();
+    for (int i = 0; i < n; ++i){
+        if (cal(i) != -1) cout << cal(i) << '\n';
+    }
+    return 0;
 }
