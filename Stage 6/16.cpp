@@ -16,11 +16,17 @@ void in(){
         cin >> inp;
         a.push_back(inp);
     }
+    for (int i = 0; i < n; ++i){
+        x.push_back(x[i]);
+    }
+    for (int i = 0; i < n; ++i){
+        a.push_back(a[i]);
+    }
 }
 
 int cal(int pos){
     long long k = x[pos];
-    for (int i = pos; i < n; ++i){
+    for (int i = pos; i < pos + n; ++i){
         k -= a[i];
         if (k < 0) return -1;
         if (i != n -1) k += x[i + 1];
