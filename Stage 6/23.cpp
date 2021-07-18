@@ -4,7 +4,7 @@ using namespace std;
 vector <string> s;
 int n;
 
-bool isTrue(const string &a, const string &b){
+bool isTrue(string a, string b){
     int pos_1, pos_2;
     for (int i = a.size() - 1; i >= 0; --i){
         if (a[i] == ' ') {
@@ -18,17 +18,21 @@ bool isTrue(const string &a, const string &b){
             break;
         }
     }
-    return a.substr(pos_1, a.size() - 1 - pos_1) < b.substr(pos_2, a.size() - 1 - pos_2);
+    string ra = a.substr(pos_1), rb = b.substr(pos_2);
+    if (ra == rb){
+        return a < b;
+    }
+    return ra < rb;
 }
 
 int main(){
-    fstream FIN, FOUT;
-    FIN.open("Input.inp", ios::in);
-    FOUT.open("Output.out", ios::out);
-    FIN >> n;
+    freopen("Input.inp", "r", stdin);
+    freopen("Output.out", "w", stdout);
+    cin >> n;
+    cin.ignore();
     string ts;
     for (int i = 0; i < n; ++i){
-        getline(FIN, ts);
+        getline(cin, ts);
         s.push_back(ts);
     }
     sort(s.begin(), s.end(), isTrue);
