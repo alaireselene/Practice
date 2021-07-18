@@ -8,7 +8,7 @@ bool isTrue(const string &a, const string &b){
     int pos_1, pos_2;
     for (int i = a.size() - 1; i >= 0; --i){
         if (a[i] == ' ') {
-            pos_1 = i + i;
+            pos_1 = i + 1;
             break;
         }
     }
@@ -18,16 +18,17 @@ bool isTrue(const string &a, const string &b){
             break;
         }
     }
-    return a.substr(pos_1) < b.substr(pos_2);
+    return a.substr(pos_1, a.size() - 1 - pos_1) < b.substr(pos_2, a.size() - 1 - pos_2);
 }
 
 int main(){
-    freopen("Input.inp", 'r', stdin);
-    freopen("Output.out", 'w', stdout);
-    cin >> n;
+    fstream FIN, FOUT;
+    FIN.open("Input.inp", ios::in);
+    FOUT.open("Output.out", ios::out);
+    FIN >> n;
     string ts;
     for (int i = 0; i < n; ++i){
-        getline(cin, ts);
+        getline(FIN, ts);
         s.push_back(ts);
     }
     sort(s.begin(), s.end(), isTrue);
