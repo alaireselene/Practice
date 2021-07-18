@@ -14,14 +14,13 @@ int main(){
     int n;
     vector <long long> a, b, c, ans = 0;
     long long a_in, b_in;
+    FIN >> n;
+
     while (!FIN.eof()){
-        FIN >> n;
-        for (int i = 0; i < n; ++i){
-            FIN >> a_in >> b_in;
-            a.push_back(a_in);
-            b.push_back(b_in);
-            c.push_back(a_in - b_in);
-        }
+        FIN >> a_in >> b_in;
+        a.push_back(a_in);
+        b.push_back(b_in);
+        c.push_back(a_in - b_in);
     }
     for (int i = 0; i < n; ++i){
         for (int k = 0; k < n - 1; ++k){
