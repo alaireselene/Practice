@@ -4,11 +4,6 @@ using namespace std;
 vector <long long> a;
 long long ans = INT32_MIN;
 
-int n, pos;
-
-// a - input array
-// ans - answer
-
 int n, pos = 0, pend;
 // n - size of array.
 // pos - pos of 1st position.
