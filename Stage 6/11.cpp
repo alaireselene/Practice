@@ -5,7 +5,10 @@ vector <float> in;
 
 bool is_mirror(int l, int r){
     for (; l <= r; ++l, --r){
-        if(in[l] != in[r]) return false;
+        if(in[l] != in[r]) {
+            break;
+            return false;
+        }
     }
     return true;
 }
@@ -25,5 +28,5 @@ int main(){
         if (len > comp) comp = len;
         len = 0;
     }
-    cout << pos << '\t' << comp << '\n';
+    cout << pos << ' ' << comp << '\n';
 }

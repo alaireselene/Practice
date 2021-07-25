@@ -1,54 +1,50 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-vector <int> ch;
+vector <char> ch;
 int n, cnt = 0; // n - so phan tu, cnt - so lan bien doi;
 
-void inp(){
-    cin >> n;
-    char tmp; // Input X _ D _ V;
-    for (int i = 0; i < n; ++i){
-        cin >> tmp;
-        if (tmp == 'X') ch.push_back(1);
-        if (tmp == 'D') ch.push_back(2);
-        if (tmp == 'V') ch.push_back(3);
-    }
-}
-
-void out(){
-    for (int &item: ch){
-        if (item == 1) cout << 'X' << ' ';
-        if (item == 2) cout << 'D' << ' ';
-        if (item == 3) cout << 'V' << ' ';
-    }
-    cout << '\n';
-}
-
-void shell_sort(){
-    for (int gap = n / 2; n > 0; gap /= 2){
-        // Tao bien khoang cach - gap.
-        for (int i = gap; i < n; ++i){
-            // Dat bien 'linh canh' - i.
-            // Sau do lay gia tri cua linh canh - tmp.
-            // Linh canh se la phan tu nho nhat.
-            // Cac buoc o duoi cung la 1 cach swap tung phan tu. Chu y!
-            int tmp = ch[i];
-            int j;
-            for (j = i; j - gap >= 0 && ch[j] < ch[j - gap]; j -= gap){
-                ch[j] = ch[j - gap];
-            }
-            ch[j] = tmp;
-        }
-        out(); ++cnt;
-        int i = 0;
-        while (ch[i] <= ch[i + 1]) ++i;
-        if (i >= n - 1) return;
-    }
-}
-
 int main(){
-    inp();
-    shell_sort();
-    cout << cnt << '\n';
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+
+    cin >> n;
+    for (pair <int, char> p = make_pair(0, 'x'); p.first < n; ++(p.first){
+        cin >> p.second;
+        ch.push_back(p.second);
+    }
+
+    for (int i = 0, c = n - 1; i <= c; ++i, c = n - 1){
+    /* Giai thich: i - bien de duyet phan tu.
+     * c - duyet tu cuoi len dau.
+     * neu i >= c thi tuc la da xong 1 luot sap xep.
+     * Nguoc lai, trong qua trinh duyet i, gap X tu
+     * dong bo qua khong sap xep.
+     * Voi 2 truong hop do va vang: Duyet tu cuoi len bang bien c.
+     * - Gap V: bo qua. Neu gap phan tu khac V, lap tuc swap.
+     * - Gap D: bo qua. Dap V cung bo qua vi V da duoc sap xep. Neu gap
+     *   phan tu khac V va D, lap tuc swap.
+     * */
+        if (ch[i] == 'X'){
+            while (ch[i] == 'X') ++i;
+        }
+        if (ch[i] == 'V'){
+            while (ch[i] == 'V') --c;
+            if (c <= i) break;
+            swap(ch[c], ch[i]);
+            ++cnt;
+            for (auto &item:ch) cout << item << ' ';
+        }
+        if (ch[i] == 'D'){
+            while (ch[c] == 'V') --c;
+            while (ch[c] == 'D') --c;
+            if (c <= i) break;
+            swap(ch[c], ch[i]);
+            ++cnt;
+            for (auto &item:ch) cout << item << ' ';
+          }
+    }
+    if (cnt == 0) for (auto &item:ch) cout << item << ' ';
+    cout << '\n' << t << '\n';
     return 0;
 }
