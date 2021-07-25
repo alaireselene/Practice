@@ -6,7 +6,6 @@ vector <float> in;
 bool is_mirror(int l, int r){
     for (; l <= r; ++l, --r){
         if(in[l] != in[r]) {
-            break;
             return false;
         }
     }
