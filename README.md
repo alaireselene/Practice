@@ -1,3 +1,5 @@
+# Vài note để học Lập trình thi đấu (Competitive Programming)
+
 Nháp nhanh thôi có gì format lại sau.
 
 
