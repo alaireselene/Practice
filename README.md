@@ -27,6 +27,6 @@ for(int a = 0; a < 900000; ++a)
         aplusb_pow2(a, b);
 ```
 
-2. n ^ 2 + n + 41 là số tự nhiên với mọi n < 40.
+2. n ^ 2 + n + 41 là số nguyên tố với mọi n < 40.
 
 3. Định lý bốn màu (còn gọi là định lý bản đồ bốn màu) phát biểu rằng đối với bất kỳ mặt phẳng nào được chia thành các vùng phân biệt, chẳng hạn như bản đồ hành chính của một quốc gia, chỉ cần dùng tối đa bốn màu để phân biệt các vùng lân cận với nhau. Hai vùng được coi là lân cận nếu như chúng có chung nhau một đoạn đường biên, không tính chung nhau một điểm. 
