@@ -1,45 +1,43 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-vector <long long> a;
-long long ans = INT32_MIN;
+long long ans = INT32_MIN, foo = 0, res = 0;
 
-int n, pos = 0, pend;
+int n, l = 0, lt, r, lx;
 // n - size of array.
-// pos - pos of 1st position.
-// pend - pos of the last position.
+// l - pos of 1st position.
+// r - pos of the last position.
+// lx - if there is only 1 item
+// lt - temp mark for 1st pos.
 
 long long x;
 // x - input.
 
-void inp(){
+int main(){
     cin >> n;
     for (int i = 0; i < n; ++i){
         cin >> x;
-        a. push_back(x);
-    }
-}
-
-void work(){
-    long long dp = a[0];
-    int tpos = 0;
-    for (int i = 1; i < n; ++i){
-        int tdp = max(dp + a[i], a[i]);
-        if (tdp == dp + a[i]){
-            tpos = i - 1;
+        ans = max(x, ans);
+        if (ans == x) lx = i;
+        foo += x;
+        if (foo < 0){
+            foo = 0;
+            lt = i;
         }
-        else tpos = i;
-        dp = tdp;
-        if (dp > ans){
-            pos = tpos;
-            ans = dp;
-            pend = i;
+        else if (foo > res){
+            res = foo;
+            r = i;
+            l = lt;
         }
     }
-}
-int main(){
-    inp();
-    work();
-    cout << pos << ' ' << pend << ' ' << ans;
+    
+    if (res == 0){
+        cout << "Day con co tong lon nhat tu " << lx + 1 << " den " << lx + 1 << '\n';
+        cout << "Tong=" << ans << '\n';
+    }
+    else{
+        cout << "Day con co tong lon nhat tu " << l + 1 << " den " << r + 1 << '\n';
+        cout << "Tong=" << res << "\n";
+    }
     return 0;
 }

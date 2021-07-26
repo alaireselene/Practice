@@ -11,14 +11,13 @@ void gen(){
     for(int i = 2; fibo.back() < n; ++i){
         fibo.push_back(fibo[i - 1] + fibo[i - 2]);
     }
-    for(int i = fibo.size() - 1; i >= 0; --i){
-        if (n - fibo[i] > 0){
-            cout << fibo[i];
-            n -= fibo[i];
-            cout << " + ";
-        }
-        else continue;
+    while (n > 0){
+        int i = lower_bound(a.begin(), a.end(), n) - a.begin();
+        if (fibo[i] > n) --i;
+        cout << fibo[i] << " + ";
+        n -= fibo[i];
     }
+    cout << '\n';
 }
 
 int main(){
