@@ -1,6 +1,6 @@
 Nháp nhanh thôi có gì format lại sau.
 
-Many thanks to Sue_zero for his contributes.
+Many thanks to Szero for his contributes.
 
 Lộ trình học CP:
 - Học 1 ngôn ngữ, các kiểu dữ liệu và cấu trúc điều khiển của nó.
