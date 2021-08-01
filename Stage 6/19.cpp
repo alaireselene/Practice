@@ -1,41 +1,29 @@
 #include <bits/stdc++.h>
+#define loop(i, start, last) for(int i = start; i < last; ++i)
 using namespace std;
 
-void swap(long long &a, long long &b){
-    long long c = a;
-    a = b;
-    b = c;
+int n, sum = 0;
+vector <pair<int, int>> in;
+
+bool isTrue(pair<int, int> x, pair<int, int> y){
+    if (x.first - x.second < y.first - y.second) return 1;
+    return 0;
 }
 
 int main(){
-    fstream FIN, FOUT;
-    FIN.open("GIFT.INP", ios::in);
-    FOUT.open("GIFT.OUT", ios::out);
-    int n;
-    vector <long long> a, b, c, ans = 0;
-    long long a_in, b_in;
-    FIN >> n;
+    freopen("GIFT.INP", 'r', stdin);
+    freopen("GIFT.OUT", 'w', stdout);
+    
+    cin >> n;
+    loop(i, 0, n - 1){
+        int x, y;
+        cin >> x >> y;
+        in.push_back(make_pair(x, y));
+    }
 
-    while (!FIN.eof()){
-        FIN >> a_in >> b_in;
-        a.push_back(a_in);
-        b.push_back(b_in);
-        c.push_back(a_in - b_in);
-    }
-    for (int i = 0; i < n; ++i){
-        for (int k = 0; k < n - 1; ++k){
-            if (c[k] > c[k + 1]){
-                swap(c[k], c[k + 1]);
-                swap(a[k], a[k + 1]);
-                swap(b[k], b[k + 1]);
-            }
-        }
-    }
-    for (int i = 0; i < n / 2; ++i){
-        ans += (a[i] + b[i]);
-    }
-    FOUT << ans;
-    FOUT.close();
-    FIN.close();
+    sort(in.begin(), in.end(), isTrue);
+    loop(i, 0, n / 2) sum += in[i].second;
+    loop(i, n / 2, n) sum += in[i].first;
+    cout << sum;
     return 0;
 }

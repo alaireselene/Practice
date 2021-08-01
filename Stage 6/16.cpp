@@ -1,42 +1,43 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+#define loop(i, start, last) for (int i = start; i <= last; ++i)
+#define pub push_back
+
 vector <long long> x;
 vector <long long> a;
 int n;
 
-void in(){
-    int inp;
-    cin >> n;
-    for (int i = 0; i < n; ++i){
-        cin >> inp;
-        x.push_back(inp);
+bool canStart(const int &i){
+    int foo = x[i];
+    for(int j =  i + 1; j <= i + n; ++j){
+        foo -= a[j - 1];
+        if (foo < 0) return 0;
+        foo += x[j];
     }
-    for (int i = 0; i < n; ++i){
-        cin >> inp;
-        a.push_back(inp);
-    }
-    for (int i = 0; i < n; ++i){
-        x.push_back(x[i]);
-    }
-    for (int i = 0; i < n; ++i){
-        a.push_back(a[i]);
-    }
+    if (foo < 0) return 0;
+    return 1;
 }
 
-int cal(int pos){
-    long long k = x[pos];
-    for (int i = pos; i < pos + n; ++i){
-        k -= a[i];
-        if (k < 0) return -1;
-        if (i != n -1) k += x[i + 1];
-    }
-    return pos + 1;
-}
 int main(){
-    in();
-    for (int i = 0; i < n; ++i){
-        if (cal(i) != -1) cout << cal(i) << '\n';
+    cin >> n;
+    int k; // Input
+    loop(i, 0, n - 1){
+        cin >> k;
+        x.pub(k);
+    }
+    loop(i, 0, n - 1){
+        cin >> k;
+        a.pub(k);
+    }
+    loop(i, 0, n - 1){
+        x.pub(x[i]);
+        a.pub(a[i]);
+    }
+    loop(i, 0, n - 1){
+        if (canStart(i)){
+            cout << i + 1 << '\n';
+        }
     }
     return 0;
 }

@@ -1,8 +1,9 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+vector <int> a;
+
 int main(){
-    vector <long long> a;
     long long inp;
     int n, count = 1;
     cin >> n;

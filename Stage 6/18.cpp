@@ -21,8 +21,6 @@ void inp(){
 
 int main(){
     fstream FOUT;
-    FOUT.open("NUMCON.OUT", ios::out);
-    inp();
     sort(s.begin(), s.end(), isLarger);
     for (auto &item:s) FOUT << item;
     cout << '\n';

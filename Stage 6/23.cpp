@@ -1,41 +1,35 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-vector <string> s;
 int n;
-
-bool isTrue(string a, string b){
-    int pos_1, pos_2;
-    for (int i = a.size() - 1; i >= 0; --i){
-        if (a[i] == ' ') {
-            pos_1 = i + 1;
-            break;
-        }
-    }
-    for (int i = b.size() - 1; i >= 0; --i){
-        if (b[i] == ' ') {
-            pos_2 = i + 1;
-            break;
-        }
-    }
-    string ra = a.substr(pos_1), rb = b.substr(pos_2);
-    if (ra == rb){
-        return a < b;
-    }
-    return ra < rb;
+string s;
+vector<pair<string, string>> foo;
+bool isSorted(pair<string,string> A,pair<string,string> B){
+    if (A.second == B.second) return A.first < B.first;
+    return A.second < B.second;
 }
 
-int main(){
-    freopen("Input.inp", "r", stdin);
-    freopen("Output.out", "w", stdout);
+int main()
+{
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+
+    freopen("Input.INP", "r", stdin);
+    freopen("Output.OUT", "w", stdout);
+    
     cin >> n;
-    cin.ignore();
-    string ts;
-    for (int i = 0; i < n; ++i){
-        getline(cin, ts);
-        s.push_back(ts);
+    while (getline(cin, s)){
+        if (s.size() == 0) continue;
+        while (s.front() == ' ') s.erase(s.begin());
+        while (s.back() == ' ') s.erase(s.end() - 1);
+        int t = s.size();
+        int i = t - 1;
+        while (s[i] != ' ') --i;
+        foo.push_back(make_pair(s.substr(0,i),s.substr(i,t)));
     }
-    sort(s.begin(), s.end(), isTrue);
-    for (auto &item:s) cout << item << '\n';
+
+    sort(f.begin(), f.end(), isSorted);
+    for (auto &item:f) cout << item.first << item.second << "\n";
+
     return 0;
 }

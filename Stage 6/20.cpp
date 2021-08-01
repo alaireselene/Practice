@@ -1,32 +1,32 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+int n, foo;
+vector <int> in;
+
 int main(){
-    vector <long long> in;
-    fstream FIN, FOUT;
-    FIN.open("INSUL.INP", stdin);
-    FOUT.open("INSUL.OUT", stdout);
-    int n;
+    freopen("INSUL.INP","r", stdin);
+    freopen("INSUL.OUT", "w", stdout);
+
     cin >> n;
-    long long temp;
+
     for (int i = 0; i < n; ++i){
-        cin >> temp;
-        in.push_back(temp);
+        cin >> foo;
+        in.push_back(foo);
     }
     sort(in.begin(), in.end());
-    if (n % 2 == 0){
-        temp = 0;
-        for (int i = n / 2; i < n; ++i){
-            temp += 2 * in[i];
-        }
+
+    foo = 0;
+    int i = (n >> 1) + (n & 1);
+    /* Bit Operator:
+     * x >> n: Dich phai n bit -> x /= 2 ^ n.
+     * n & 1: thuc hien phep AND giua n voi tung bit cua 1.
+     * O day neu n % 2 = 0 thi n & 1 = 0 va nguoc lai
+     * */
+    while (i < n){
+        foo += in[i++];
     }
-    else{
-        temp = a[n / 2];
-        for (int i = n / 2 + 1; i < n; ++i){
-            temp += 2 * in[i];
-        }
-    }
-    cout << temp;
-INSUL.OUT
+    if (n & 1) foo += in[n >> 1];
+    cout << foo;
     return 0;
 }
