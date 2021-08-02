@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int n;
+size_t n;
 
 int main(){
     freopen("Labai.INP", "r", stdin);
