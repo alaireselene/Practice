@@ -8,9 +8,9 @@ int main(){
     cin >> n;
     for (int i = 0, x; i < n; ++i){
         cin >> x;
-        f[x]++;
-        ans = max(ans, f[x]);
+        a[x]++;
+        ans = max(ans, a[x]);
     }
-    cout << ans;
+    cout << a.size << '\n' << ans;
     return 0;
 }

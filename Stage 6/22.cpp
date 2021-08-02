@@ -1,28 +1,20 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+int n;
+
 int main(){
-    fstream FIN, FOUT;
-    FIN.open("Labai.INP", stdin);
-    FOUT.open("Labai.OUT", stdout);
-    int n;
+    freopen("Labai.INP", "r", stdin);
+    freopen("Labai.OUT", "w", stdout);
     cin >> n;
-    vector <long long> in(n);
-    for (int i = 0; i < n; ++i){
-        cin >> in[i];
+
+    set <size_t> in(n);
+    for (size_t i = 0, x; i < n; ++i){
+        cin >> x;
+        in.insert(x);
     }
-    vector <long long> store;
-    long long temp = a[i];
-    store.push_back(a[i]);
-    for (int i = 1; i < n; ++i){
-        if (a[i] != temp){
-            store.push_back(a[i]);
-            temp = a[i];
-        }
-        else continue;
-    }
-    cout << store.size() << '\n';
-    for (auto &item:store) cout << item << ' ';
+    cout << in.size() << '\n';
+    for (auto &item:in) cout << item << ' ';
     cout << '\n';
     return 0;
 }
