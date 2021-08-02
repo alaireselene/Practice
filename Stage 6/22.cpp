@@ -8,7 +8,7 @@ int main(){
     freopen("Labai.OUT", "w", stdout);
     cin >> n;
 
-    set <size_t> in(n);
+    set <size_t> in;
     for (size_t i = 0, x; i < n; ++i){
         cin >> x;
         in.insert(x);
