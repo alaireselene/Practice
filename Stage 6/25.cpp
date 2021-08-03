@@ -1,11 +1,11 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int n, s = 0;
+int n, s;
 vector<pair<int, int>> p;
 
 bool isTrue(pair<int, int> x, pair<int, int> y){
-    return float(x.first / x.second) > float(y.first / y.second);
+    return ((float) x.first / x.second) < ((float)y.first / y.second);
 }
 
 int main(){
@@ -22,6 +22,6 @@ int main(){
         temp += p[i].first;
         s += (temp * p[i].second);
     }
-    cout << s;
+    cout << s << '\n';
     return 0;
 }
