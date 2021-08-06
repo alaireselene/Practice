@@ -16,14 +16,16 @@ bool isSame(const int &i){
      * p - Vi tri can xet
      * */
     if (i == 0) return false;
-    bool foo = true;
-    for (int r = (i + 1) / 2; r > 0; --r){
+    bool foo;
+    for (int r = i / 2; r > 0; --r){
+        foo = true;
         for (int p = i - 2 * r + 1; p + r <= i; ++p){
             if(s[p] != s[p + r]){
                 foo = false;
                 break;
-            };
+            }
         }
+        if (foo == true) return true;
     }
     return foo;
 }
