@@ -1,31 +1,30 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-size_t n, k, c1 = 1, c2 = 1;
-array <char, 20> st;
+size_t n;
+array <char, 21> st;
+array <size_t, 20> op = {0}, cl = {0};
 
 void out(){
-    for (size_t i = 0; i < k; ++i){
-        cout << st[k] << ' ';
+    for (size_t i = 1; i <= n * 2; ++i){
+        cout << st[i];
     }
     cout << '\n';
 }
 
 void bt(size_t it){
     for (char ch = '('; ch <= ')'; ++ch){
-        if (c1 <= n || c2 <= n){
-            st[it] = ch;
-            if (ch == '(') ++c1;
-            else ++c2;
+        st[it] = ch;
+        op[it] = op[it - 1] + (ch == '(');
+        cl[it] = cl[it - 1] + (ch == ')');
+        if (cl[it] > op[it] || op[it] > n) continue;
+        if (it == 2 * n) out();
+        else bt(it + 1);
 
-        }
     }
 }
 
 int main(){
     cin >> n;
-    k = n * 2;
-    st[0] = '(';
-    st[k - 1] = ')';
     bt(1);
 }

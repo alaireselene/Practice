@@ -2,35 +2,30 @@
 using namespace std;
 
 int k, n;
-array <string, 10> st, si;
-array <bool, 10> id = {0};
+array <string, 11> si;
+array <int, 11> id = {0};
 
 void out(){
-    for (int i = 0; i < k; ++i){
-        cout << st[i] << ' ';
+    for (int i = 1; i <= k; ++i){
+        cout << si[id[i]] << ' ';
     }
     cout << '\n';
 }
 
 void bt(int pos){
-    for (int i = 0; i < n; ++i){
-        if (!id[i]){
-            st[pos] = si[i];
-            if (pos == k - 1) out();
-            else {
-                id[i] = 1;
-                bt(pos + 1);
-                id[i] = 0;
-            }
-        }
+    for (int i = id[pos - 1] + 1; i <= n - k + pos; ++i){
+        id[pos] = i;
+        if (pos == k) out();
+        else bt(pos + 1);
     }
 }
 
 int main(){
     cin >> k >> n;
-    for (int i = 0; i < n; ++i){
+    si[0] = "";
+    for (int i = 1; i <= n; ++i){
         cin >> si[i];
     }
-    bt(0);
+    bt(1);
     return 0;
 }
