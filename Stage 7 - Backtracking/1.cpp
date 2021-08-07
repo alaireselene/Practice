@@ -17,24 +17,25 @@ bool isSame(const int &i){
      * */
     if (i == 0) return false;
     bool foo;
-    for (int r = i / 2; r > 0; --r){
-        foo = true;
-        for (int p = i - 2 * r + 1; p + r <= i; ++p){
-            if(s[p] != s[p + r]){
-                foo = false;
-                break;
+    for (int r = (i + 1) / 2; r > 0; --r){
+        foo = false;
+        for (int p = 0; p + r <= i; ++p){
+            if(s[p] == s[p + r]){
+                foo = true;
             }
         }
-        if (foo == true) return true;
+        if (foo == true) return foo;
     }
-    return foo;
+    return false;
 }
 
 void bt(int i){
     for (char ch = 'A'; ch <= 'C'; ++ch){
         s[i] = ch;
-        if (!isSame(i)) if (i == n - 1) out();
-        else bt(i + 1);
+        if (!isSame(i)){
+            if (i == n - 1) out();
+            else bt(i + 1);
+        }
     }
 }
 
