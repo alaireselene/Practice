@@ -20,18 +20,19 @@ void out(int k){
 }
 
 void bt(int k){
+    if (c + (fin - tsum[k - 1]) / in[k] >= c) return;
     for (int i = 1; i <= n; ++i){
        if (!check[i]){
            st[k] = in[i];
            tsum[k] = tsum[k - 1] + in[i];
            check[i] = 1;
-           cout << "TEST: " << st[k] << '\t' << tsum[k] << '\t' << bool(check[i]) << '\n';
-           if (tsum[k > fin]) break;
-           if (tsum[k] == fin){
+           ++tc;
+           if (tsum[k] > fin) break;
+           if (tsum[k] == fin && tc < c){
                out(k);
                break;
            }
-           else bt(k + 1);
+           if (tsum[k] < fin) bt(k + 1);
            check[i] = 0;
        }
     }
@@ -45,4 +46,3 @@ int main(){
     sort(in.begin() + 1, in.end(), greater<int>());
     bt(1);
     return 0;
-}
