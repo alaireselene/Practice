@@ -12,23 +12,28 @@ int n, fin, c = 0, tc = 0;
  */
 
 void out(int k){
-    cout << tc << '\n';
+    cout << "\t PASS! \n";
     for (int i = 1; i <= k; ++i){
         cout << st[i] << ' ';
     }
     cout << '\n';
 }
 
-void bt(int i){
-    for (int k = 1; k <= n; ++i){
-        if (!check[k]){
-            st[i] = in[k];
-            ++check[k];
-            tsum[i] = tsum[i - 1] + in[k];
-            if (tsum[i] == fin) out(i);
-            else if (tsum[i] < fin) bt(i + 1);
-            check[k] = 0;
-        }
+void bt(int k){
+    for (int i = 1; i <= n; ++i){
+       if (!check[i]){
+           st[k] = in[i];
+           tsum[k] = tsum[k - 1] + in[i];
+           check[i] = 1;
+           cout << "TEST: " << st[k] << '\t' << tsum[k] << '\t' << bool(check[i]) << '\n';
+           if (tsum[k > fin]) break;
+           if (tsum[k] == fin){
+               out(k);
+               break;
+           }
+           else bt(k + 1);
+           check[i] = 0;
+       }
     }
 }
 
@@ -39,8 +44,5 @@ int main(){
     }
     sort(in.begin() + 1, in.end(), greater<int>());
     bt(1);
-    //for (int i = 1; i <= n; ++i){
-    //    cout << in[i] << ' ';
-    //}
-    //cout << '\n';
+    return 0;
 }
