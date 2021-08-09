@@ -1,8 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-array <int, 21> st, in, tsum = {0}, check = {0};
-int n, fin, c = 0, tc = 0;
+array <int, 21> st, in, bc, tsum = {0}, check = {0};
+int n, fin, c = INT_MAX;
 
 /* in - input array
  * st - store the best config
@@ -12,27 +12,25 @@ int n, fin, c = 0, tc = 0;
  */
 
 void out(int k){
-    cout << "\t PASS! \n";
+    cout << k << "\n";
     for (int i = 1; i <= k; ++i){
-        cout << st[i] << ' ';
+        cout << bc[i] << ' ';
     }
     cout << '\n';
 }
 
 void bt(int k){
-    if (c + (fin - tsum[k - 1]) / in[k] >= c) return;
     for (int i = 1; i <= n; ++i){
        if (!check[i]){
            st[k] = in[i];
            tsum[k] = tsum[k - 1] + in[i];
            check[i] = 1;
-           ++tc;
-           if (tsum[k] > fin) break;
-           if (tsum[k] == fin && tc < c){
-               out(k);
-               break;
+           if (tsum[k] > fin) continue;
+           if (tsum[k] == fin && k < c){
+               c = k;
+               bc = st;
            }
-           if (tsum[k] < fin) bt(k + 1);
+           else bt(k + 1);
            check[i] = 0;
        }
     }
@@ -45,4 +43,6 @@ int main(){
     }
     sort(in.begin() + 1, in.end(), greater<int>());
     bt(1);
+    out(c);
     return 0;
+}
