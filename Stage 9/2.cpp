@@ -11,5 +11,11 @@ int main(){
         cin >> x;
         inp.push_back(x);
     }
-    for (int )
+    sort(inp.begin(), inp.end());
+    int lo = 0, hi = n - 1, mid, ans = INT_MAX;
+    while (lo <= hi){
+        mid = (lo + hi) / 2;
+        if (x[mid] < ans) ans = x[mid];
+
+    }
 }
