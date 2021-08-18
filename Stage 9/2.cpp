@@ -1,21 +1,21 @@
-/*  Suck this  */
 #include <bits/stdc++.h>
 using namespace std;
 
-vector <int> inp;
-int l, r, ans, n;
-
+int n, ans;
+set <int> in;
 int main(){
+    freopen("SN.INP", "r", stdin);
+    freopen("SN.OUT", "w", stdout);
     cin >> n;
     for (int i = 0, x; i < n; ++i){
         cin >> x;
-        inp.push_back(x);
+        in.insert(x);
     }
-    sort(inp.begin(), inp.end());
-    int lo = 0, hi = n - 1, mid, ans = INT_MAX;
-    while (lo <= hi){
-        mid = (lo + hi) / 2;
-        if (x[mid] < ans) ans = x[mid];
-
+    for (int i = 1; ; ++i){
+        if (in.count(i) < 1){
+            ans = i;
+            break;
+        }
     }
+    cout << ans << '\n';
 }
