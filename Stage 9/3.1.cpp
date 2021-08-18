@@ -28,6 +28,6 @@ int main(){
         if (isTrue(h)) lo = h + 1;
         else hi = h - 1;
     }
-    cout << h;
+    cout << hi;
     return 0;
 }
