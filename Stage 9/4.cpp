@@ -6,11 +6,14 @@ li n, sum = 0;
 map<li, li> in;
 
 int main(){
+    freopen ("TAXI.INP", "r", stdin);
+    freopen ("TAXI.OUT", "w", stdout);
     cin >> n;
     for (li i = 0, x; i < n; ++i){
         cin >> x;
         ++in[x];
     }
+
     sum += (in[1] / 4 + in[2] / 2 + in[4]);
     in[1] -= in[1] / 4;
     in[2] -= int(in[2] / 2.0) * 2;
@@ -27,5 +30,5 @@ int main(){
     in[2] -= b;
     
     if (in[1] != 0 || in[2] != 0) sum += 1;
-    cout << sum << '\n';
+    cout << sum;
 }
