@@ -15,7 +15,7 @@ int main(){
         raw += (1.0 / x);
     }
     raw = double(s) / raw;
-    uint64_t l = raw, r = (*max_element(inp.begin(), inp.end())) * s;
+    uint64_t l = raw, r = 500 * 1e15;
     while (l <= r){
         uint64_t m = l + (r - l) / 2, c = 0;
         for (auto &item:inp) c += (m / item);
