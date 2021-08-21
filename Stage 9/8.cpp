@@ -3,35 +3,41 @@ using namespace std;
 typedef uint64_t u64;
 
 vector<u64> in;
-u64 n, ans, f1, f2;
+u64 n;
 
-struct foo{
+struct DIFF{
     u64 max_dif; /* MAX DIFF */
     u64 _max; /* MAX */
     u64 _min; /* MIN */
+
+    void ouch(u64 i){
+        max_dif = 0;
+        _max = in[i];
+        _min = in[i];
+    }
+
+    void work(DIFF &a, DIFF &b){
+        max_dif = max({
+                b._max - a._min,
+                a.max_dif,
+                b.max_dif });
+        _max = max(a._max, b._max);
+        _min = min(a._min, b._min);
+    }
 };
+
+DIFF a, b, ans;
 
 void find(  u64 lo, /* LOW */
             u64 hi, /*  HIGH */
-            u64 MAXDIFF, /* MAX DIFF */
-            u64 MAX, /*  MAX VALUE */
-            u64 MIN){ /*  MIN VALUE  */
-
+            DIFF &f ){
     u64 mid;
-    foo a, b;
-
-    if (lo == hi){
-        MAXDIFF = 0;
-        MAX =  MIN = in[hi];
-    }
+    if (lo == hi) f.ouch(hi);
     else{
         mid = lo + (hi - lo) / 2;
-        find(lo, mid, a.max_dif, a._max, a._min);
-        find(mid + 1, hi, b.max_dif, b._max, b._min);
-        MAXDIFF = b._max - a._min;
-        MAXDIFF = max(a.max_dif, b.max_dif);
-        MAX = max(a._max, b._max);
-        MIN = min(a._min, b._min);
+        find(lo, mid, a);
+        find(mid + 1, hi, b);
+        f.work(a, b);
     }
 }
 
@@ -41,6 +47,6 @@ int main(){
         cin >> x;
         in.push_back(x);
     }
-    find(0, n - 1, ans, f1, f2);
-    cout << ans << '\n';
+    find(0, n - 1, ans);
+    cout << ans.max_dif << '\n';
 }
