@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
-typedef uint64_t u64;
+typedef int64_t u64;
 
 vector<u64> in;
 u64 n;
@@ -26,13 +26,14 @@ struct DIFF{
     }
 };
 
-DIFF a, b, ans;
+DIFF ans;
 
 void find(  u64 lo, /* LOW */
             u64 hi, /*  HIGH */
             DIFF &f ){
+    DIFF a, b;
     u64 mid;
-    if (lo == hi) f.ouch(hi);
+    if (lo == hi) f.ouch(lo);
     else{
         mid = lo + (hi - lo) / 2;
         find(lo, mid, a);
