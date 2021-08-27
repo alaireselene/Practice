@@ -1,5 +1,5 @@
 /* 
- * Author:  Sena Alaire from EdenProject
+ * Author:  Sena Alaire
  *          truongsondotcom@gmail.com
  * Task:    "12.cpp"
  * Created: 26/08/2021
@@ -9,64 +9,47 @@
 using namespace std;
 typedef int64_t i64;
 
-#define Time   cerr << "Time collapse : " << fixed << setprecision(3) << 1.000*clock()/CLOCKS_PER_SEC
 #define pb push_back
-#define ii pair<int, int>
 #define TASK "SEQGAME"
 
 vector<i64> a, b;
 size_t n;
 i64 x, ans = INT64_MAX;
 
-i64 sum(const i64 &_a, const i64 &_b){
-    return _a + _b > 0 ? _a + _b : (_a + _b) * (-1);
-}
-
-void work(const size_t &k){
-    cout << "========================\n";
-    cout << "START WORKING AT " << k << '\n';
-    size_t l = 0, r = n - 1;
-    cout << "SET UP RANGE...\n";
-    while(l <= r){
-        size_t mid = (l + r) / 2;
-        cout << l << ' ' << mid << ' '
-            << r << '\n';
-        if(a[mid] + b[k] < 0) {l = mid + 1;
-        cout << "GREATER...\n";}
-        else if (a[mid] + b[k] > 0) {r = mid - 1;
-        cout << "SMALLER...\n";}
-        else{
-            cout << "SAME!!!\n";
-            l = mid;
-            break;
-        }
-        cout << "COMPARE COMPLETE!\n";
-    }
-    ans = min(ans, sum(a[l], b[k]));
-    cout << '\n';
-}
-
 int main(){
-    // freopen(TASK".INP", "r", stdin);
-    // freopen(TASK".INP", "w", stdout);
+    freopen(TASK".INP", "r", stdin);
+    freopen(TASK".INP", "w", stdout);
     cin >> n;
-    for(size_t i = 0; i < n; ++i){
+    for (size_t i = 0; i < n; ++i) {
         cin >> x;
         a.pb(x);
     }
-    cout << "INPUT A DONE!\n";
-    for(size_t i = 0; i < n; ++i){
+    for (size_t i = 0; i < n; ++i) {
         cin >> x;
-        a.pb(x);
+        b.pb(x);
     }
-    cout << "INPUT B DONE!\n";
+
     sort(a.begin(), a.end());
+    sort(b.begin(), b.end());
 
-    for(size_t i = 0; i < n; ++i)
-        work(i);
+    for (size_t i = 0; i < n; ++i) {
+        auto itmin = lower_bound(b.begin(), b.end(), -a[i]);
+        auto itmax = lower_bound(b.rbegin(), b.rend(), -a[i], greater<int>());
+        if (itmin == b.end()) {
+            ans = min(ans, abs(*itmax + a[i]));
+        }
+        else if (itmax == b.rend()) {
+            ans = min(ans, abs(*itmin + a[i]));
+        }
+        else {
+            ans = min({
+                    ans,
+                    abs(*itmax + a[i]),
+                    abs(*itmin + a[i]),
+                    });
+        }
+    }
 
-    for(size_t i = 0; i < n; ++i)
-        cout << a[i] << ' ';
     cout << ans;
     return 0;
 }
