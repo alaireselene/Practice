@@ -14,7 +14,7 @@ int main() {
          milk_list.rend());
 
     for (int i = 0; i < cow; ++i){
-        if (milk_list.at(i) - i == 0)
+        if (milk_list.at(i) - i <= 0)
             break;
         else {
             total_milk += (milk_list.at(i) - i);
