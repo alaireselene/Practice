@@ -13,13 +13,11 @@ int main() {
     sort(milk_list.rbegin(), 
          milk_list.rend());
 
-    int foo = 0;
     for (int i = 0; i < cow; ++i){
-        if (milk_list.at(i) - foo == 0)
+        if (milk_list.at(i) - i == 0)
             break;
         else {
-            total_milk += milk_list.at(i) - foo;
-            ++foo;
+            total_milk += (milk_list.at(i) - i);
         }
     }
     cout << total_milk << '\n';
