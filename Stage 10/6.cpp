@@ -1,21 +1,18 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int n, answer = 1;
+int n, ans;
 
 int main() {
     cin >> n;
-    vector<int> brick(n);
+    vector<int> brick(n), store(n);
     for (auto &hardness:brick)
         cin >> hardness;
     sort(brick.rbegin(), brick.rend());
-    for (auto &item:brick) cout << item << ' ';
-    cout << '\n';
-    for (int i = 1; i < n; ++i) {
-        if (brick.at(0) <= 0) break;
-        ++answer;
-        brick.at(0) -= brick.at(i);
+    ans = brick.at(0) + 1;
+    for (int i = 0; i < brick.at(0); ++i) {
+        if (i + brick.at(i) + 1 < n) ans = min(ans, i + brick.at(i) + 1);
     }
-    cout << answer << '\n';
+    cout << ans << '\n';
     return 0;
 }
