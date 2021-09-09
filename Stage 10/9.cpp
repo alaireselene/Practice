@@ -8,7 +8,7 @@ int main() {
     vector<int> solve_time(n);
     for (auto &item:solve_time)
         cin >> item;
-    sort(solve_time.rbegin(), solve_time.rend());
+    sort(solve_time.begin(), solve_time.end());
     sum = solve_time.at(0);
     for (int i = 1; i < n; ++i) {
         sum = sum * 2 + solve_time.at(i);
