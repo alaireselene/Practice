@@ -18,6 +18,6 @@ int main()
     for (int i = 0; i + 1 < n; ++i) {
         sum += pos_list[i].x * pos_list[i + 1].y - pos_list[i + 1].x * pos_list[i].y;
     }
-    sum /= 2;
+    sum = abs(sum) / 2;
     cout << sum;
 }

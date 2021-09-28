@@ -20,7 +20,7 @@ void test() {
     for (int i = 1; i < 3; ++i) {
         inbound += __gcd(abs(t[i].x - t[i - 1].x), abs(t[i].y - t[i - 1].y)) + __gcd(abs(t[0].x - t[2].x), abs(t[0].y - t[2].y));
     }
-    cout << ceil((_s + 2 - inbound) / 2.0) << '\n';
+    cout << ceil((_s + 2 - inbound) / 2.0) << endl;
 }
 
 int main() {

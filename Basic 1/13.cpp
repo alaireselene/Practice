@@ -12,5 +12,9 @@ int main() {
             sum = 0;
         }
     }
-    cout << ans;
+    cout << ans << endl;
+    for (int i = 0; i < ans; ++i) {
+        cout << 'e';
+    }
+    return 0;
 }

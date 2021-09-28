@@ -1,4 +1,4 @@
-#include <iostream>
+#include <bits/stdc++.h>
 
 using namespace std;
 
@@ -14,5 +14,5 @@ int main()
     double A = a.y - b.y;
     double B = b.x - a.x;
     double C = a.x * b.y - b.x * a.y;
-    cout << A << ' ' << B << ' ' << C << '\n';
+    cout << fixed << setprecision(2) << A  << ' ' << B << ' ' << C << endl;
 }
