@@ -2,12 +2,13 @@
 using namespace std;
 
 int main() {
-    uint64_t digit = 0;
-    string n;
+    uint64_t digit = 0, n, _n;
     cin >> n;
-    for (int i = 0; i < n.length(); ++i) {
-        digit += n[i] - '0';
+    _n = n;
+    while (n) {
+        digit += n % 10;
+        n /= 10;
     }
-    cout << (stol(n) % digit == 0);
+    cout << (_n % digit == 0);
     return 0;
 }
