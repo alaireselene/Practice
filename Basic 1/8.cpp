@@ -4,11 +4,15 @@ using namespace std;
 struct pos {
     double x;
     double y;
+    friend istream& operator>> (istream &stream, pos &A) {
+        stream >> A.x >> A.y;
+        return stream;
+    }
+    friend ostream& operator<< (ostream &stream, const pos &A) {
+        stream << A.x << A.y;
+        return stream;
+    }
 };
-
-void posin(pos &a) {
-    cin >> a.x >> a.y;
-}
 
 int declare(double &x) {
     x /= (2 * M_PI / 360.0);
@@ -18,14 +22,13 @@ int declare(double &x) {
 }
 
 int main() {
-    pos a, b, c;
-    posin(a); posin(b); posin(c);
-    pos ab, ac;
+    pos a, b, c, ab, ac;
+    cin >> a >> b >> c;
     ab.x = b.x - a.x;
     ab.y = b.y - a.y;
     ac.x = c.x - a.x;
     ac.y = c.y - a.y;
-
-    double ans = acos((ab.x * ac.x + ab.y * ac.y) / (sqrt((pow(ab.x, 2) + pow(ab.y, 2)) * (pow(ac.x, 2) + pow(ac.y, 2)))));
+    double dot = ab.x * ac.x + ac.y * ab.y, det = ab.x * ac.y - ac.x * ab.y;
+    double ans = atan2(det, dot);
     return !(cout << declare(ans) << ' ' << ans << endl);
 }
