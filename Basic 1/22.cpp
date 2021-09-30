@@ -1,22 +1,23 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-bool good(const int &n) {
-    int a = 0, b = 0;
-    string s = to_string(n);
-    for (int i = 0; i < s.length(); ++i) {
-        if ((s[i] - '0') % 2 == 0) ++a;
-        else ++b;
+bool check(int a) {
+    int x = 0, y = 0;
+    while (a) {
+        int foo = a % 10;
+        if (foo % 2) x += foo;
+        else y += foo;
+        a /= 10;
     }
-    return a == b;
+    return x == y;
 }
 
 int main() {
-    int a, b, ans = 0;
+    int a, b, c = 0;
     cin >> a >> b;
     while (a <= b) {
-        if(good(a)) ++ans;
+        c += check(a);
         ++a;
     }
-    cout << ans;
+    return !(cout << c);
 }
