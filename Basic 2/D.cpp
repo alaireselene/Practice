@@ -1,6 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+// Testing purpose; AC 5/8
+
 string encode(int d) { // Divident
 	string result;
 	int r; // Remainder;

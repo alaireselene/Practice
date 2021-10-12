@@ -8,7 +8,7 @@ int main() {
 	string save;
 	for (int i = 0; i < s.size(); ++i) {
 		if (s[i] < '0' || s[i] > '9') {
-			if ((save.back() - '0') % 5 == 0 && save.size() != 1) {
+			if (save.back() == '5' || save.back() == '0') {
 				a.push_back(save);
 			}
 			save = "";
