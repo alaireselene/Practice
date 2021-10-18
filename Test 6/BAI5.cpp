@@ -15,7 +15,6 @@ int main() {
 	}
 	if (sum.back() % 4 != 0) {
 		cout << 0;
-		return 0;
 	} 
 	else {
 		vector<int> a(4);
@@ -25,12 +24,8 @@ int main() {
 			if (sum[i] == sum.back() / 2) ++a[1];
 			if (sum[i] == sum.back() / 4 * 3) ++a[2];
 		}
-		auto it = find(a.begin(), a.end(), 0);
-		if (it != a.end()) {
-			cout << 0;
-			return 0;
-		}
-		else cout << *max_element(a.begin(), a.end());
+		cout << a[0] * a[1] * a[2];
 	}
+	cout << endl;
 	return 0;
 }
