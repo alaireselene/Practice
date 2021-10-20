@@ -2,8 +2,8 @@
 using namespace std;
 
 int main() {
-	freopen("BAI4.INP", "r", stdin);
-	freopen("BAI4.INP", "w", stdin);
+	freopen("BAI5.INP", "r", stdin);
+	freopen("BAI5.INP", "w", stdin);
 	int a;
 	string b;
 	cin >> a >> b;
