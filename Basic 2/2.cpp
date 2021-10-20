@@ -1,39 +1,36 @@
 #include <bits/stdc++.h>
 using namespace std;
-vector<int> sieve(1000000000, 1);
 
-bool s_reverse(const int &n) {
-	string s = to_string(n);
-	int s_size = s.size();
-	for (int i = 0; i <= s_size / 2; ++i) {
-		if (s[i] != s[s_size - i - 1]) return 0;
+bool is_flip(int n) {
+	int comp = n;
+	int k = 0;
+	while (n != 0) {
+		k += n % 10;
+		n /= 10;
+		k *= 10;
 	}
-	return 1;
-}
-
-void generate() {
-	for (int i = 0; i * i < 65001; ++i) {
-		if (i < 2) sieve[i] = 0;
-		else {
-			if (sieve[i]) {
-				for (int k = i * i; k < 65001; k += i) {
-					sieve[k] = 0;
-				}
-			}
-		}
-	}
+	return comp == k / 10;
 }
 
 int main() {
-	int l, r, c = 0;
-	std::cin >> l >> r;
-	generate();
-	while (l <= r) {
-		if (sieve[l] && s_reverse(l)) {
-			cout << l << " ";
+	bool not_prime[65001];
+	not_prime[0] = not_prime[1] = 1;
+	for (int i = 2; i * i < 65001; ++i) {
+		if (!not_prime[i]) {
+			for (int j = i * i; j < 65001; j += i) {
+				not_prime[j] = 1;
+			}
+		}
+	}
+	int n, k, c = 0;
+	cin >> n >> k;
+	while (n <= k) {
+		if (!not_prime[n] && is_flip(n)) {
+			cout << n << ' ';
 			++c;
 		}
-		++l;
+		++n;
 	}
-	return !(cout << endl << c << endl);
+	cout << endl << c << endl;
+	return 0;
 }
